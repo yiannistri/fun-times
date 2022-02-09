@@ -1,0 +1,20 @@
+
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  creationTimestamp: null
+  name: kind-add-all-the-profiles-podinfo
+  namespace: wego-system
+spec:
+  chart:
+    spec:
+      chart: podinfo
+      sourceRef:
+        apiVersion: source.toolkit.fluxcd.io/v1beta1
+        kind: HelmRepository
+        name: weaveworks-charts
+        namespace: wego-system
+      version: 6.0.0
+  interval: 1m0s
+status: {}
