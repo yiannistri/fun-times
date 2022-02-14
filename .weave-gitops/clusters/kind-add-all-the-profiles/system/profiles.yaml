@@ -1,4 +1,14 @@
-
+---
+metadata:
+  creationTimestamp: null
+spec:
+  chart:
+    spec:
+      chart: ""
+      sourceRef:
+        name: ""
+  interval: 0s
+status: {}
 ---
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
@@ -15,6 +25,6 @@ spec:
         kind: HelmRepository
         name: weaveworks-charts
         namespace: wego-system
-      version: 6.0.0
+      version: 6.0.1
   interval: 1m0s
 status: {}
