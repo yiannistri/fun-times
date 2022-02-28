@@ -1,0 +1,51 @@
+apiVersion: source.toolkit.fluxcd.io/v1beta1
+kind: HelmRepository
+metadata:
+  creationTimestamp: null
+  name: weave-gitops-enterprise-charts
+  namespace: wego-system
+spec:
+  interval: 1m0s
+  secretRef:
+    name: weave-gitops-enterprise-credentials
+  url: https://charts.dev.wkp.weave.works/releases/charts-v3
+status: {}
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  creationTimestamp: null
+  name: weave-gitops-enterprise
+  namespace: wego-system
+spec:
+  chart:
+    spec:
+      chart: mccp
+      sourceRef:
+        kind: HelmRepository
+        name: weave-gitops-enterprise-charts
+        namespace: wego-system
+      version: 0.0.19
+  interval: 1m0s
+  values:
+    config:
+      capi:
+        repositoryURL: ssh://git@github.com/nikimanoledaki/fun-times.git
+      cluster:
+        name: kind-test-wge
+status: {}
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
+kind: Kustomization
+metadata:
+  creationTimestamp: null
+  name: apps-capi
+  namespace: wego-system
+spec:
+  interval: 1m0s
+  path: ./.weave-gitops/apps/capi
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    name: wego-auto-github-fun-times
+status: {}
