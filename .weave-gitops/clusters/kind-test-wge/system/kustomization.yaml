@@ -4,8 +4,8 @@ metadata:
   name: kind-test-wge
   namespace: wego-system
 resources:
+- weave-gitops-enterprise.yaml
 - gitops-runtime.yaml
 - flux-source-resource.yaml
 - flux-system-kustomization-resource.yaml
 - flux-user-kustomization-resource.yaml
-- wego-app.yaml
