@@ -9,3 +9,4 @@ resources:
 - flux-source-resource.yaml
 - flux-system-kustomization-resource.yaml
 - flux-user-kustomization-resource.yaml
+- capitemplate.yaml
