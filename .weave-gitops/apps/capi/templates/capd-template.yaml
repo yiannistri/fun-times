@@ -24,7 +24,7 @@ spec:
           weave.works/capi: bootstrap
       spec:
         clusterNetwork:
-         services:
+          services:
             cidrBlocks:
               - 10.128.0.0/12
           pods:
@@ -140,4 +140,4 @@ spec:
               name: "${CLUSTER_NAME}-md-0"
               namespace: "${NAMESPACE}"
               apiVersion: infrastructure.cluster.x-k8s.io/v1beta1
-              kind: DockerMachineTemplate 
+              kind: DockerMachineTemplate
